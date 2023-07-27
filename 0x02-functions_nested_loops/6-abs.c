@@ -17,6 +17,6 @@ int _abs(int d)
 	}
 	else
 	{
-		return (d * -d);
+		return (d + -d * 2);
 	}
 }
