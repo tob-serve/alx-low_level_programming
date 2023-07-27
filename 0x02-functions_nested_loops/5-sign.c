@@ -1,13 +1,15 @@
 #include "main.h"
+
 /**
  * print_sign - Determines if the input number
- * greater, equal or less than zero
+ * is greater, equal, or less than zero.
  *
- * @n: the input number as an integer
+ * @n: The input number as an integer.
  *
- * Returm: 1 i s greater than zero, 0 is zero
- * -1 is less than zero
+ * Return: 1 if @n is greater than zero, 0 if @n is zero,
+ * -1 if @n is less than zero.
  */
+
 int print_sign(int n)
 {
 	if (n > 0)
