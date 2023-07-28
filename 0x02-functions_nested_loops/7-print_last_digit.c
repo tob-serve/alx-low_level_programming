@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
-  * print_last_digits - prints the las digits
+  * print_last_digit - prints the las digits
   * of the number given.
   *
   * @n: input number as an integer
@@ -9,7 +9,7 @@
   * Return: last digits.
   */
 
-int print_last_digits(int n)
+int print_last_digit(int n)
 {
 	int l;
 
