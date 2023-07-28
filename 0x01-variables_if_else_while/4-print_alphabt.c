@@ -8,9 +8,9 @@
 
 int main(void)
 {
-	int j;
+	int j = 97;
 
-	for (j = 97; j <= 122; j++)
+	while (j <= 122)
 	{
 		if (j == 101 || j == 113)
 		{
@@ -18,6 +18,7 @@ int main(void)
 			continue;
 		}
 		putchar(j);
+		j++;
 	}
 	putchar('\n');
 
