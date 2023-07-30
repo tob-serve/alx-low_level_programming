@@ -7,8 +7,8 @@
  *
  * Return: Always 0.
  */
-int main(void)
-int print_times_table(int n)
+
+void print_times_table(int n);
 {
     print_times_table(3);
     _putchar('\n');
@@ -16,6 +16,5 @@ int print_times_table(int n)
     _putchar('\n');
     print_times_table(98);
     _putchar('\n');
-    print_times_table(12);  
-    return (0);
+    print_times_table(12);
 }
