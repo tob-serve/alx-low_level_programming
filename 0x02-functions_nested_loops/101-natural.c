@@ -11,6 +11,7 @@ int main()
 
 	int limit = 1024;
 	int total = 0;
+	int i;
 
 	for (int i = 1; i < limit; i++)
 	{
