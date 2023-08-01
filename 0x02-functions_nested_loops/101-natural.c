@@ -8,7 +8,18 @@
 
 int main(void)
 {
+	int i;
+	int total;
 
-	printf("244293\n");
+	for (int d = 0; d < 1024; d++)
+	{
+		if (d % 3 == 0 || d % 5 == 0)
+		{
+			total += d;
+		}
+	}
+
+	printf("%d\n", total);
+
 	return (0);
 }
