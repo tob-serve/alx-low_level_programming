@@ -13,8 +13,10 @@ int main()
 	int total = 0;
 	int i;
 
-	for (int i = 1; i < limit; i++)
+	while (i < limit)
 	{
+		i++;
+
 		if (i % 3 == 0 || i % 5 == 0)
 		{
 			total += i;
