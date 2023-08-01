@@ -8,11 +8,12 @@
 
 int main(void)
 {
-	int i;
+	int d;
 	int total;
 
-	for (int d = 0; d < 1024; d++)
+	while (d < 1024)
 	{
+		d++;
 		if (d % 3 == 0 || d % 5 == 0)
 		{
 			total += d;
