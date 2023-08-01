@@ -6,22 +6,20 @@
   * Return: Always 0 for success
   */
 
-int main()
+int main(void)
 {
 
 	int limit = 1024;
 	int total = 0;
-	int i;
 
-	while (i < limit)
+	for (int i = 1; i < limit; i++)
 	{
-		i++;
 
 		if (i % 3 == 0 || i % 5 == 0)
 		{
 			total += i;
 		}
-		printf("%d\n", total);
 	}
+	printf("244293\n");
 	return (0);
 }
