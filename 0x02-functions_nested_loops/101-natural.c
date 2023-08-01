@@ -1,20 +1,24 @@
 #include <stdio.h>
-#include "main.h"
-
 
 /**
- * main - check the code.
- *
- * Return: Always 0.
- */
+  * main - Entry point of program
+  *
+  * Return: Always 0 for success
+  */
 
-void print_times_table(int n);
+int main()
 {
-    print_times_table(3);
-    _putchar('\n');
-    print_times_table(5);
-    _putchar('\n');
-    print_times_table(98);
-    _putchar('\n');
-    print_times_table(12);
+
+	int limit = 1024;
+	int total = 0;
+
+	for (int i = 1; i < limit; i++)
+	{
+		if (i % 3 == 0 || i % 5 == 0)
+		{
+			total += i;
+		}
+		printf("%d\n", total);
+	}
+	return (0);
 }
