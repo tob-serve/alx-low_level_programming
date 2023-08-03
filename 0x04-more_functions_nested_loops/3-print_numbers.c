@@ -1,18 +1,17 @@
-#include <stdio.h>
+#include "main.h"
 
 /**
-  * print_numbers - prints numbers from 0 - 9
-  * 
-  * Return: Always 0 fpr success
-  */
+ * print_numbers - print 0-9
+ * return: void
+ */
 
 void print_numbers(void)
 {
-	int dan = 0;
+	char c;
 
-	while (dan < 9)
+	for (c = '0'; c <= '9'; c++)
 	{
-		return (dan);
-		dan++;
+		_putchar(c);
 	}
+	_putchar('\n');
 }
