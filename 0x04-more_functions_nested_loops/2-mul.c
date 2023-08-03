@@ -1,12 +1,11 @@
 #include <stdio.h>
 
 /**
-  * main - Entry point for program
-  * @a: charcter to multiply
-  * @b: also character to multiply
-  *
-  * Return: Always 0 for success
-  */
+ * mul - multiply 2 int
+ * @a: first int
+ * @b: second int
+ * Return: addition of the multiplicattion
+ */
 
 int mul(int a, int b)
 {
