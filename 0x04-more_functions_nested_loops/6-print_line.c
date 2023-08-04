@@ -2,6 +2,8 @@
 
 /**
   * print_line - print a line in the terminal
+  *
+  * @n: nuumber of times the character
   */
 
 void print_line(int n)
