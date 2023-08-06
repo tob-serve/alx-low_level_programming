@@ -32,5 +32,6 @@ int main(void)
 		numbers++;
 
 	}
+	printf("\n");
 	return (0);
 }
