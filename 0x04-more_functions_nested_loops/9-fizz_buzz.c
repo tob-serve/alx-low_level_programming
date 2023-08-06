@@ -13,17 +13,17 @@ int main(void)
 	while (numbers <= 100)
 	{
 
-		if (numbers % 3 ==0 && numbers % 5 == 0)
+		if (numbers % 3 == 0 && numbers % 5 == 0)
 		{
-			printf("FIZZBUZZ ");
+			printf("FizzBuzz ");
 		}
 		else if (numbers % 3 == 0)
 		{
-			printf("FIZZ ");
+			printf("Fizz ");
 		}
 		else if (numbers % 5 == 0)
 		{
-			printf("BUZZ ");
+			printf("Buzz ");
 		}
 		else
 		{
