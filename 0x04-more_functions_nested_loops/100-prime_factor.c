@@ -2,6 +2,8 @@
 
 /**
   * main - ENtry point
+  * number 612852475143
+  * Return: (0)
   */
 
 int main(void)
