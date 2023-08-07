@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
-  * print_number - prints numbers 
+  * print_number - prints numbers
   * @n: variable number
   */
 
