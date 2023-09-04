@@ -13,7 +13,7 @@ int set_bit(unsigned long int *n, unsigned int index)
 	unsigned long int bitmask;
 
 	if (index > 63)
-		return -1;
+		return (-1);
 
 	bitmask = 1UL << index;
 
