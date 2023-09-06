@@ -11,5 +11,5 @@ int get_endianness(void)
 	int LiBi;
 
 	LiBi = (int) (((char *)&x) [0]);
-	return (LiBi)
+	return (LiBi);
 }
