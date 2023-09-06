@@ -10,6 +10,6 @@ int get_endianness(void)
 	int x = 1;
 	int LiBi;
 
-	LiBi = (int) (((char *)&x) [0]);
+	LiBi = (int) (((char *)&x)[0]);
 	return (LiBi);
 }
