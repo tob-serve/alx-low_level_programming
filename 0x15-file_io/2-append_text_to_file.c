@@ -1,7 +1,12 @@
 #include "main.h"
 
 /**
+  * append_text_to_file - is the Entry point of program
   *
+  * @filename: name to be given to file created
+  * @text_content: content to be written in file
+  *
+  * Return: 1 or -1 for success or fall
   */
 
 int append_text_to_file(const char *filename, char *text_content)
@@ -21,7 +26,7 @@ int append_text_to_file(const char *filename, char *text_content)
 		else
 		{
 			FilePointer = fopen(filename, "a+");
-			
+
 			if (FilePointer != NULL)
 			{
 				fprintf(FilePointer, "%s", text_content);
