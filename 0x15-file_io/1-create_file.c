@@ -15,12 +15,12 @@ int create_file(const char *filename, char *text_content)
 
 	if (text_content == NULL)
 	{
-		FilePointer = fopen(filename, "w+");
+		FilePointer = fopen(filename, "w");
 		chmod(filename, S_IRUSR | S_IWUSR);
 	}
 	else
 	{
-		FilePointer = fopen(filename, "w+");
+		FilePointer = fopen(filename, "w");
 		chmod(filename, S_IRUSR | S_IWUSR);
 		fprintf(FilePointer, "%s", text_content);
 	}
