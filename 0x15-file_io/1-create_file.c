@@ -17,20 +17,21 @@ int create_file(const char *filename, char *text_content)
 	if (stat(filename, &filestat) == 0)
 		remove(filename);
 
+	if (filename == NULL)
+		return (-1);
+
+	FilePointer = fopen(filename, "w");
+
 	if (text_content == NULL)
 	{
-		FilePointer = fopen(filename, "w");
-		chmod(filename, S_IRUSR | S_IWUSR);
+		return (-1);
 	}
-	else
+	else if(text_content != NULL)
 	{
-		FilePointer = fopen(filename, "w");
-		chmod(filename, S_IRUSR | S_IWUSR);
 		fprintf(FilePointer, "%s", text_content);
 	}
 
-	if (filename == NULL)
-		return (-1);
+	chmod(filename, S_IRUSR | S_IWUSR);
 
 	fclose(FilePointer);
 
