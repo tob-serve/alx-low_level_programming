@@ -1,71 +1,57 @@
 #include "main.h"
 
 /**
-  * main - Entrypoint of program
+  * ArgumentCheck - Entry point of program
   *
-  * @argc: argument count
-  * @argv: argumant vector
+  * @argc:argument count
   *
-  * Return: int value
+  * Return: varies depend on result
   */
+
+int ArgumentCheck(int argc)
+{
+	if (argc != 3)
+	{
+		fprintf(stderr, "Usage: cp file_from file_to\n");
+		exit(97);
+	}
+}
+
+/**
+ * main - Entry point of program
+ *
+ * @argc:argument count
+ * @argv: argument vector
+ *
+ * Return: varies depend on result
+ */
 
 int main(int argc, char *argv[])
 {
-	int FileDesFirst, FileDesSec;
-	struct stat FileStat;
-	char buffer[1024];
-	ssize_t bytesRead;
-	ssize_t bytesWritten = -1;
+	int FileDesOne;
+	struct stat FileState;
+	FILE *TempFd = 0;
 
-	if (argc != 3)
+
+	ArgumentCheck(argc);
+
+	if (stat(argv[2], &FileState) == 0)
 	{
-		fprintf(stderr, "Usage: cp file_from file_to");
-		exit(97);
+		TempFd = fopen(argv[2], "w");
+		fclose(TempFd);
 	}
-
-	if (stat(argv[2], &FileStat) == 0)
-		remove(argv[2]);
-
-	if (stat(argv[1], &FileStat) != 0)
+	else
+	{
+		FileDesOne = open(argv[2], 0_RDWR | O_CREAT, 0664)
+	}
+	if (stat(argv[1], &FileState) != 0)
 	{
 		fprintf(stderr, "Error: Can't read from file %s\n", argv[1]);
 		exit(98);
 	}
-
-	FileDesFirst = open(argv[1], O_RDONLY);
-
-	if (stat(argv[2], &FileStat) != 0)
+	while ((bytesRead = read(sourceFd, buffer, sizeof(buffer))) > 0)
 	{
-		if (FileDesFirst != 0)
-		{
-			fprintf(stderr, "Error: Can't write to %s\n", argv[2]);
-			exit(99);
-		}
+		bytesWritten = write(destinationFd, buffer, bytesRead);
 	}
-	FileDesSec = open(argv[2], O_WRONLY | O_CREAT | O_TRUNC, 0664);
-
-	while ((bytesRead = read(FileDesFirst, buffer, sizeof(buffer))) > 0)
-	{
-		bytesWritten = write(FileDesSec, buffer, bytesRead);
-		if (bytesWritten == -1)
-		{
-			fprintf(stderr, "Error: Can't write to file %s\n", argv[2]);
-			close(FileDesFirst);
-			close(FileDesSec);
-			exit(99);
-		}
-	}
-
-	if (close(FileDesFirst) == 0)
-	{
-		fprintf(stderr, "Error: Can't close fd %d\n", FileDesFirst);
-		exit(100);
-	}
-	if (close(FileDesSec) == 0)
-	{
-		fprintf(stderr, "Error: Can't close fd %d\n", FileDesSec);
-		exit(100);
-	}
-	return (1);
-
+	fclose(TempFd);
 }
