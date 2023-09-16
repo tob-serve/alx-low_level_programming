@@ -31,6 +31,8 @@ int main(int argc, char *argv[])
 	int FileDesOne;
 	struct stat FileState;
 	FILE *TempFd = 0;
+	ssize_t bytesRead, bytesWritten;
+	char buffer[1024];
 
 
 	ArgumentCheck(argc);
