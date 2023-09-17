@@ -5,7 +5,6 @@
   * up to 3
   *
   * @argc: argument count
-  * @argv: argument vector
   * Return: int value 97
   */
 
@@ -19,10 +18,10 @@ void ArgumentCheck(int *argc)
 }
 
 /**
-  * file_toCheck: checks if file_to already exist if
-  * it does its content gets cleard for new input 
+  * file_toCheck - checks if file_to exist
+  * it does its content gets cleard for new input
   *
-  * @argv[2]: name of to copy to
+  * @SecArgv: name of to copy to
   */
 
 void file_toCheck(char *SecArgv)
@@ -46,7 +45,7 @@ void file_toCheck(char *SecArgv)
 }
 
 /**
-  * file_fromCheck: checks if file_from exist if it dont
+  * file_fromCheck -  checks if file_from exist if it dont
   * return code 98
   *
   * @FirstArgv: first agrgument vector
@@ -65,7 +64,7 @@ void file_fromCheck(char *FirstArgv)
 
 /**
   * Copyfile_fromfile_to - copys file_from to _file_to
-  * 
+  *
   * @FirstArgv: first file name
   * @SecArgv: second file name
   */
@@ -111,7 +110,9 @@ void Copyfile_fromfile_to(char *FirstArgv, char *SecArgv)
   * main - Entry point of program
   *
   * @argc: argument count
-  * @argv[]: argument vector
+  * @argv: argument vector
+  *
+  * Return: 0 for success
   */
 
 int main(int argc, char **argv)
@@ -124,5 +125,5 @@ int main(int argc, char **argv)
 
 	Copyfile_fromfile_to(argv[1], argv[2]);
 
-	return(0);
+	return (0);
 }
