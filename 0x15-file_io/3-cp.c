@@ -82,16 +82,24 @@ void Copyfile_fromfile_to(char *FirstArgv, char *SecArgv)
 		exit(98);
 	}
 
-	while ((BytesRead = read(*FirstArgv, buffer, sizeof(buffer))) > 0)
+	FileDesTwo = open(SecArgv, O_WRONLY | O_CREAT | O_TRUNC, 0644);
+	if (FileDesTwo == -1)
 	{
-		BytesWritten = write(*SecArgv, buffer, BytesRead);
-	}
-
-	if  (BytesWritten != BytesRead)
-	{
-		fprintf(stderr, "Error: can't write to %s\n", SecArgv);
+		fprintf(stderr, "Error: Can't write to %s\n", SecArgv);
 		exit(99);
 	}
+
+	while ((BytesRead = read(FileDesOne, buffer, sizeof(buffer))) > 0)
+	{
+		BytesWritten = write(FileDesTwo, buffer, BytesRead);
+
+		if  (BytesWritten != BytesRead)
+		{
+			fprintf(stderr, "Error: can't write to %s\n", SecArgv);
+			exit(99);
+		}
+	}
+
 	if (close(FileDesOne) != 0)
 	{
 		fprintf(stderr, "Error: can't close %d\n", FileDesOne);
@@ -102,8 +110,6 @@ void Copyfile_fromfile_to(char *FirstArgv, char *SecArgv)
 		fprintf(stderr, "Error: can't close %d\n", FileDesTwo);
 		exit(100);
 	}
-	close(FileDesOne);
-	close(FileDesTwo);
 }
 
 /**
