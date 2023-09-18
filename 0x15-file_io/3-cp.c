@@ -60,7 +60,6 @@ void Copyfile_fromfile_to(char *FirstArgv, char *SecArgv)
 	mode_t old_umask = umask(0);
 
 	FileDesOne = open(FirstArgv, O_RDONLY);
-	umask(old_umask);
 	if (FileDesOne == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", FirstArgv);
@@ -68,6 +67,7 @@ void Copyfile_fromfile_to(char *FirstArgv, char *SecArgv)
 	}
 
 	FileDesTwo = open(SecArgv, O_RDWR);
+	umask(old_umask);
 	if (FileDesTwo == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", SecArgv);
@@ -84,6 +84,8 @@ void Copyfile_fromfile_to(char *FirstArgv, char *SecArgv)
 			exit(99);
 		}
 	}
+
+	fchmod(*SecArgv, S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH);
 
 	if (close(FileDesOne) == -1)
 	{
