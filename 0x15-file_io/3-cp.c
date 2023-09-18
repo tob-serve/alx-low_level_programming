@@ -85,12 +85,12 @@ void Copyfile_fromfile_to(char *FirstArgv, char *SecArgv)
 	}
 	if (close(FileDesOne) == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", FileDesOne);
+		dprintf(STDERR_FILENO, "Error: Can't close %d\n", FileDesOne);
 		exit(100);
 	}
 	if (close(FileDesTwo) == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", FileDesTwo);
+		dprintf(STDERR_FILENO, "Error: Can't close %d\n", FileDesTwo);
 		exit(100);
 	}
 }
