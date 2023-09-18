@@ -3,23 +3,6 @@
 #include <stdlib.h>
 
 /**
-  * ArgumentCheck - checks if the argument input is
-  * up to 3
-  *
-  * @argc: argument count
-  * Return: int value 97
-  */
-
-void ArgumentCheck(int *argc)
-{
-	if (*argc != 3)
-	{
-		fprintf(stderr, "Usage: cp file_from file_to");
-		exit(97);
-	}
-}
-
-/**
   * file_toCheck - checks if file_to exist
   * it does its content gets cleard for new input
   *
@@ -125,7 +108,11 @@ void Copyfile_fromfile_to(char *FirstArgv, char *SecArgv)
 
 int main(int argc, char **argv)
 {
-	ArgumentCheck(&argc);
+	if (argc != 3)
+	{
+		fprintf(stderr, "Usage: cp file_from file_to");
+		exit(97);
+	}
 
 	file_toCheck(argv[2]);
 
