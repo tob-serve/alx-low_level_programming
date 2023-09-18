@@ -67,7 +67,7 @@ void Copyfile_fromfile_to(char *FirstArgv, char *SecArgv)
 		exit(98);
 	}
 
-	FileDesTwo = open(SecArgv, O_WRONLY | O_CREAT | O_TRUNC, 0644);
+	FileDesTwo = open(SecArgv, O_WRONLY | O_CREAT, 0644);
 	if (FileDesTwo == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", SecArgv);
