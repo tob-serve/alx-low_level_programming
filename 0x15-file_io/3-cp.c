@@ -42,7 +42,7 @@ void file_fromCheck(char *FirstArgv)
 
 	if (stat(FirstArgv, &filestat) != 0)
 	{
-		fprintf(stderr, "Error: can't read from %s\n", FirstArgv);
+	dprintf(STDERR_FILENO, "Error: can't read from %s\n", FirstArgv);
 		exit(98);
 	}
 }
@@ -63,14 +63,14 @@ void Copyfile_fromfile_to(char *FirstArgv, char *SecArgv)
 	FileDesOne = open(FirstArgv, O_RDONLY);
 	if (FileDesOne == -1)
 	{
-		fprintf(stderr, "Error: Can't read from file %s\n", FirstArgv);
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", FirstArgv);
 		exit(98);
 	}
 
 	FileDesTwo = open(SecArgv, O_WRONLY | O_CREAT | O_TRUNC, 0644);
 	if (FileDesTwo == -1)
 	{
-		fprintf(stderr, "Error: Can't write to %s\n", SecArgv);
+		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", SecArgv);
 		exit(99);
 	}
 
@@ -87,12 +87,12 @@ void Copyfile_fromfile_to(char *FirstArgv, char *SecArgv)
 
 	if (close(FileDesOne) != 0)
 	{
-		fprintf(stderr, "Error: can't close %d\n", FileDesOne);
+		dprintf(STDERR_FILENO, "Error: can't close %d\n", FileDesOne);
 		exit(100);
 	}
 	if (close(FileDesTwo) != 0)
 	{
-		fprintf(stderr, "Error: can't close %d\n", FileDesTwo);
+		dprintf(STDERR_FILENO, "Error: can't close %d\n", FileDesTwo);
 		exit(100);
 	}
 }
@@ -110,7 +110,7 @@ int main(int argc, char **argv)
 {
 	if (argc != 3)
 	{
-		fprintf(stderr, "Usage: cp file_from file_to");
+		dprintf(STDERR_FILENO, "Usage: cp file_from file_to");
 		exit(97);
 	}
 
