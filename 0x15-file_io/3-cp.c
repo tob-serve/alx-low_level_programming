@@ -14,7 +14,6 @@ void file_toCheck(char *SecArgv)
 	struct stat filestat;
 	FILE *FilePointer;
 	int FileDes = 0;
-	mode_t permissions = S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH;
 
 	if (stat(SecArgv, &filestat) == 0)
 	{
@@ -23,10 +22,13 @@ void file_toCheck(char *SecArgv)
 	}
 	if (stat(SecArgv, &filestat) != 0)
 	{
-		FileDes = open(SecArgv, O_WRONLY | O_CREAT | O_TRUNC, permissions);
-		close(FileDes);
+		FileDes = open(SecArgv, O_WRONLY | O_CREAT, S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH);
 	}
-	close(FileDes);
+	if (close(FileDes) != 0)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", FileDesTwo);
+		exit(100);
+	}
 }
 
 /**
@@ -59,15 +61,17 @@ void Copyfile_fromfile_to(char *FirstArgv, char *SecArgv)
 	int FileDesOne = -1, FileDesTwo = -1;
 	char buffer[1024];
 	ssize_t BytesRead, BytesWritten;
+	mode_t old_umask = umask(0);
 
 	FileDesOne = open(FirstArgv, O_RDONLY);
+	umask(old_umask);
 	if (FileDesOne == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", FirstArgv);
 		exit(98);
 	}
 
-	FileDesTwo = open(SecArgv, O_WRONLY | O_CREAT, 0644);
+	FileDesTwo = open(SecArgv, O_RDWR);
 	if (FileDesTwo == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", SecArgv);
