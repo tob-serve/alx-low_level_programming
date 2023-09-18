@@ -24,11 +24,7 @@ void file_toCheck(char *SecArgv)
 	{
 		FileDes = open(SecArgv, O_WRONLY | O_CREAT, S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH);
 	}
-	if (close(FileDes) != 0)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", FileDes);
-		exit(100);
-	}
+	close(FileDes);
 }
 
 /**
