@@ -79,7 +79,7 @@ void Copyfile_fromfile_to(char *FirstArgv, char *SecArgv)
 
 		if  (BytesWritten != BytesRead)
 		{
-			fprintf(stderr, "Error: Can't write to %s\n", SecArgv);
+			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", SecArgv);
 			exit(99);
 		}
 	}
