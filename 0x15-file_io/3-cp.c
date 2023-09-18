@@ -42,7 +42,7 @@ void file_fromCheck(char *FirstArgv)
 
 	if (stat(FirstArgv, &filestat) != 0)
 	{
-	dprintf(STDERR_FILENO, "Error: can't read from %s\n", FirstArgv);
+	dprintf(STDERR_FILENO, "Error: can't read from file %s\n", FirstArgv);
 		exit(98);
 	}
 }
@@ -87,12 +87,12 @@ void Copyfile_fromfile_to(char *FirstArgv, char *SecArgv)
 
 	if (close(FileDesOne) != 0)
 	{
-		dprintf(STDERR_FILENO, "Error: can't close %d\n", FileDesOne);
+		dprintf(STDERR_FILENO, "Error: can't close fd %d\n", FileDesOne);
 		exit(100);
 	}
 	if (close(FileDesTwo) != 0)
 	{
-		dprintf(STDERR_FILENO, "Error: can't close %d\n", FileDesTwo);
+		dprintf(STDERR_FILENO, "Error: can't close fd %d\n", FileDesTwo);
 		exit(100);
 	}
 }
