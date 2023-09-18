@@ -42,7 +42,7 @@ void file_fromCheck(char *FirstArgv)
 
 	if (stat(FirstArgv, &filestat) != 0)
 	{
-	dprintf(STDERR_FILENO, "Error: can't read from file %s\n", FirstArgv);
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", FirstArgv);
 		exit(98);
 	}
 }
@@ -80,19 +80,19 @@ void Copyfile_fromfile_to(char *FirstArgv, char *SecArgv)
 
 		if  (BytesWritten != BytesRead)
 		{
-			fprintf(stderr, "Error: can't write to %s\n", SecArgv);
+			fprintf(stderr, "Error: Can't write to %s\n", SecArgv);
 			exit(99);
 		}
 	}
 
 	if (close(FileDesOne) != 0)
 	{
-		dprintf(STDERR_FILENO, "Error: can't close fd %d\n", FileDesOne);
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", FileDesOne);
 		exit(100);
 	}
 	if (close(FileDesTwo) != 0)
 	{
-		dprintf(STDERR_FILENO, "Error: can't close fd %d\n", FileDesTwo);
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", FileDesTwo);
 		exit(100);
 	}
 }
