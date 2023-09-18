@@ -26,7 +26,7 @@ void file_toCheck(char *SecArgv)
 	}
 	if (close(FileDes) != 0)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", FileDesTwo);
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", FileDes);
 		exit(100);
 	}
 }
