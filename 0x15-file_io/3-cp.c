@@ -22,7 +22,9 @@ void file_toCheck(char *SecArgv)
 	}
 	if (stat(SecArgv, &filestat) != 0)
 	{
-		FileDes = open(SecArgv, O_WRONLY | O_CREAT, S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH);
+		FileDes = open(SecArgv,
+				O_WRONLY | O_CREAT,
+				S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH);
 	}
 	close(FileDes);
 }
@@ -57,7 +59,6 @@ void Copyfile_fromfile_to(char *FirstArgv, char *SecArgv)
 	int FileDesOne = -1, FileDesTwo = -1;
 	char buffer[1024];
 	ssize_t BytesRead, BytesWritten;
-	mode_t old_umask = umask(0);
 
 	FileDesOne = open(FirstArgv, O_RDONLY);
 	if (FileDesOne == -1)
@@ -67,13 +68,11 @@ void Copyfile_fromfile_to(char *FirstArgv, char *SecArgv)
 	}
 
 	FileDesTwo = open(SecArgv, O_RDWR);
-	umask(old_umask);
 	if (FileDesTwo == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", SecArgv);
 		exit(99);
 	}
-
 	while ((BytesRead = read(FileDesOne, buffer, sizeof(buffer))) > 0)
 	{
 		BytesWritten = write(FileDesTwo, buffer, BytesRead);
@@ -84,9 +83,6 @@ void Copyfile_fromfile_to(char *FirstArgv, char *SecArgv)
 			exit(99);
 		}
 	}
-
-	fchmod(*SecArgv, S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH);
-
 	if (close(FileDesOne) == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", FileDesOne);
