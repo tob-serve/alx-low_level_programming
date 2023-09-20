@@ -15,8 +15,7 @@ int create_file(const char *filename, char *text_content);
 int append_text_to_file(const char *filename, char *text_content);
 int append_text_to_file(const char *filename, char *text_content);
 int create_file(const char *filename, char *text_content);
-int file_fromCheck(char *argv);
-int CopyFiles(char *argvOne, char *argvTwo);
-int main(int argc, char **argv);
+int file_fromCheck(char *argc);
+int main(int argc, char *argv[]);
 
 #endif
