@@ -23,7 +23,7 @@ int file_fromCheck(int argc)
   * main - Entr point of program
   *
   * @argc: argument count
-  * @argv[]: argument vector
+  * @argv: argument vector
   *
   * Return: always 0 for success
   */
