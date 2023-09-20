@@ -8,7 +8,7 @@
   * Return: always 0 for succes
   */
 
-int file_fromCheck(char *argc)
+int file_fromCheck(int argc)
 {
 	if (argc != 3)
 	{
@@ -31,8 +31,9 @@ int file_fromCheck(char *argc)
 int main(int argc, char *argv[])
 {
 	int fd_r, fd_w, x, m, n;
+	char buf[BUFSIZ];
 
-	file_fromCheck(argv[1]);
+	file_fromCheck(argc);
 
 	fd_r = open(argv[1], O_RDONLY);
 	if (fd_r == -1)
@@ -65,4 +66,5 @@ int main(int argc, char *argv[])
 			dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd_w);
 		exit(100);
 	}
+	return (0);
 }
